@@ -24,6 +24,22 @@ function smoothScrollTo(targetY, duration) {
     requestAnimationFrame(step);
 }
 
+// Mobile Menu Logic
+document.querySelector('.mobile-toggle')?.addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.querySelector('.mobile-menu')?.classList.toggle('active');
+    document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden'; // Prevent scrolling
+});
+
+// Close menu when a link is clicked
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.mobile-toggle').classList.remove('active');
+        document.querySelector('.mobile-menu').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
 // Obsługa kliknięć w linki z # w href
 document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {

@@ -646,17 +646,89 @@ a.shot-link:hover .shot {
     grid-column: span 6
   }
 
+  /* Hide desktop nav */
   nav {
     display: none
   }
 
+  .nav-right .btn {
+    display: none
+  }
+
+  /* Hide default buttons in header */
+
+  /* Mobile Toggle Button */
   .mobile-toggle {
-    display: inline-flex
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transition: 0.3s;
+    margin: 0 auto;
+  }
+
+  /* Animate Hamburger to X */
+  .mobile-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   .gallery {
     grid-template-columns: 1fr
   }
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  /* dynamic view height */
+  background: var(--bg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  text-decoration: none;
+  color: var(--txt);
 }
 
 @media (max-width: 560px) {
@@ -670,5 +742,23 @@ a.shot-link:hover .shot {
 
   .hero {
     padding-top: 38px
+  }
+
+  /* Adjust font sizes for small screens */
+  .h {
+    font-size: 32px;
+  }
+
+  .h2 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  /* Reduce section padding */
+  section {
+    padding: 60px 0;
   }
 }
